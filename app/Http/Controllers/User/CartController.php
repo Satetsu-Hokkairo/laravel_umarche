@@ -70,12 +70,19 @@ class CartController extends Controller
                 return redirect()->route('user.cart.index');
             }else{
                 $lineItem = [
-                    'name' => $product->name,
-                    'description' => $product->information,
-                    'amount' => $product->price,
-                    'currency' => 'jpy',
-                    'quantity' => $product->pivot->quantity,
-                ];
+                    'price_data' => [
+                        'unit_amount' => $product->price,
+                        'currency' => 'JPY',
+ 
+                    'product_data' => [
+                        'name' => $product->name,
+                        'description' => $product->information,
+                ],
+            ],
+                'quantity' => $product->pivot->quantity,
+ 
+ 
+            ];
                 array_push($lineItems, $lineItem);
             }
         }
@@ -88,10 +95,10 @@ class CartController extends Controller
             ]);
         }
 
-        dd('test');
         \Stripe\Stripe::setApiKey(env('STRIPE_SERCRET_KEY'));
 
         $session = \Stripe\Checkout\Session::create([
+            'payment_method_types' => ['card'],
             'line_items' => [$lineItems],
             'mode' => 'payment',
             'success_url' => route('user.items.index'),
@@ -101,6 +108,6 @@ class CartController extends Controller
         $publicKey = env('STRIPE_PUBLIC_KEY');
 
         return view('user.checkout',
-            compact('session', 'publickey'));
+            compact('session', 'publicKey'));
     }
 }

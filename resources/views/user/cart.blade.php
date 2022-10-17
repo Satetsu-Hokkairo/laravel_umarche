@@ -36,6 +36,13 @@
                         </div>
                       </div>
                      @endforeach
+                     <div class="flex justify-end mx-24">
+                        <div class="my-2">
+                           小計: {{ number_format($totalPrice)}}
+                           <span class="text-smtext-gray-700">円(税込)</span>
+                        </div>
+                        <button onclick="location.href='{{ route('user.cart.checkout')}}'" class="ml-4 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">購入する</button>
+                    </div>
                     @else
                      カートに商品が入っていません
                     @endif
