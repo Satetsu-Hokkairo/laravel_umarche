@@ -13,9 +13,9 @@
                     @foreach($products as $product)
                     <div class="w-1/4 p-2 md:p-4">
                         <a href="{{route('user.items.show', ['item' => $product->id ])}}">
-                        <div class="border rounded-md p-2 md:p-4">
+                        <div class="border rounded-md p-2 md:p-4 hover:bg-gray-100">
                             <x-thumbnail filename="{{$product->filename ?? ''}}" type="products" />
-                            <div class="mt-4">
+                            <div class="mt-4 hover:text-center">
                                 <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ $product->category }}</h3>
                                 <h2 class="text-gray-900 title-font text-base font-medium">{{$product->name}}</h2>
                                 <p class="mt-1 text-sm">{{ number_format($product->price) }}<span class="text-xs text-gray-700">円(税込)</span></p>

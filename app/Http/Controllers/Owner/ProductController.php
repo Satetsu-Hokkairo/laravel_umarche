@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Image;
 use Illuminate\Support\Facades\DB; //QueryBuilder クエリビルダー
 use App\Models\Product;
@@ -11,7 +12,6 @@ use App\Models\Stock;
 use App\Models\shop;
 use App\Models\PrimaryCategory;
 use App\Models\Owner;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
