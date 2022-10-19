@@ -1,5 +1,3 @@
-##Udemy Laravel口座
-
 ## ダウンロード方法
 
 git clone
